@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+<synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <type type="nexusiq.CliConfig" extends="xlrelease.Configuration">
+        <property name="cliHome"          category="input"/>
+        <property name="cliExecutable"    category="input" default="cli" hidden="true" />
+        <property name="nexusHost"          category="input" default="DEFAULT"/>
+        <property name="nexusPort"          category="input" default="DEFAULT"/>
+        <property name="nexusProxyHost"     category="input" default="DEFAULT"/>
+        <property name="nexusProxyPort"     category="input" default="DEFAULT"/>
+        <property name="nexusUserName"      category="input" default="admin"/>
+        <property name="nexusPassword"      category="input" default="admin" password="true" />
+    </type>
+
+    <type type="nexusiq.cliTask" extends="xlrelease.PythonScript" virtual="true" >
+        <property name="iconLocation" default="nexusiq/nexusiq-icon.png" hidden="true" />
+        <property name="taskColor" hidden="true" default="#68B749" />
+        <property name="cli" kind="ci" referenced-type="nexusiq.CliConfig" required="true" category="input" />
+
+        <property name="output" required="false" category="output" description="Console output of the process."/>
+        <property name="err"    required="false" category="output" description="Error stream of the process."/>
+    </type>
+
+    <type type="nexusiq.evaluateBinary" extends="nexusiq.cliTask">
+        <property name="binaryUrl"        category="input" description="Location of the binary to be evaluated" />
+        <property name="appName"          category="input" description="Name of Application in Nexus IQ" />
+        <property name="stage"            category="input" description="Stage of release" kind="enum">
+          <enum-values>
+            <value>Development</value>
+            <value>Build</value>
+            <value>Stage</value>
+            <value>Release</value>
+            <value>Operate</value>
+          </enum-values>
+        </property>
+        <property name="appName"          category="input" description="Name of Application in Nexus IQ" />
+    </type>
+
+</synthetic>

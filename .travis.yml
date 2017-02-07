@@ -1,0 +1,16 @@
+language: java
+sudo: false
+notifications:
+  hipchat:
+    rooms:
+      secure: OlIO4DA0xfqdHqS2ytSfDucjIoncHBgLDFjDi1u+qsLOPBeYpYuNJOZkW531yKPFS/na8BjS5WzjrdZW1Wa2I41X2KdNEqOBPxCNsDlvRzEsMUXGCekTEkIaVKgyD8LsAqku+I0CFRsYCQCxRz6yufEenDf7VwdhbM/345mopkI=
+deploy:
+  provider: releases
+  api_key:
+    secure: ud2DezOep5WlmwD0vWPyXDxvFGJtj0zZzrYWRNucu/T0fSrnDNNVq9bUTJ5+Yr+0Bce+eq1o7P4TTn7/5CuA7W9047AfmyeTAsCD7LoGGi4qDIOuag3B7aCcbyggr5/XzFcrX3TTPA5yMiIkqhRvqOYmmqUhiISoPu/P2XnKrs/NYfnndLpOCXFp209uyfItu1tyNSVj+3YQkYKOzQNPC5Cg1TAV/qStYvOJNn/e+nzPSGuW6GgwBqYC5SVEFhUkHTMZFyfKmN4cCGaNhTkdogbyIUwd6ilxkz0tmMgd5ojU06dg6sMeXoDqa8aLrfFwGxK5mkkfTqSSeopJr9kHTIwNVYG5xXAVrWIBLRnmbkpOwKAA/Av1bO7tR8sacNha581LnGUNotgT//8cZ+JaRzxyhOlMU5D3/T5UuJat308K0EvuW1AOLi1xL60AsNKCBIbZJrnNY7Bmnb2AEA8HEJYneWcWWePNK7WkbNxBuLZt2dx7c56Yd2fLppxedyYphlXYIg+7T6WioSjYbEvrD2dxGFqazK/4mr2658QL/gbYhwECkHLX0dWGcuAwLATTlnNCySkocaGpXxFAKOjnTXhh3K8Fa6XGtXJBAkxD5jcuaZUhzHkJYeWxBNYhz6xRO/7FFvahIibMDiLzo8LqjJWVlNBXUBor2aT1canqcgw=
+  file: build/libs/xlr-sonatype-nexus-iq-plugin-0.0.1.jar 
+  skip_cleanip: true
+  on:
+    all_branches: true
+    tags: true
+    repo: vanstoner/xlr-sonatype-nexus-iq-plugin
