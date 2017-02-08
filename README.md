@@ -32,12 +32,9 @@ This plugin (0.0.1+) requires XLR 6.1x+
 ## Types ##
 
 + Evaluate Binary
-  * `binaryURL` - URL to the binary to evaluate
-  * `stage` - Stage of the evaluation _enum_
-  * `app` - Application to be evaluated
-  * `iqURL` - URL and Port of the IQ Server
-  * `username` IQ Server username
-  * `password` IQ Password
+   `<property name="binaryUrl"        category="input" description="Location of the binary to be evaluated" />`
+   `<property name="nexusiqApp"       category="input" description="Name of Application in Nexus IQ" />`
+   `<property name="nexusiqStage"     category="input" description="Stage of release" kind="enum">`
 
 ## Tiles ##
 
