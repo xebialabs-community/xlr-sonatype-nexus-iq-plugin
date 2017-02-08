@@ -32,6 +32,7 @@ This plugin (0.0.1+) requires XLR 6.1x+
 ## Types ##
 
 + Evaluate Binary
+
    `<property name="binaryUrl"        category="input" description="Location of the binary to be evaluated" />`
    `<property name="nexusiqApp"       category="input" description="Name of Application in Nexus IQ" />`
    `<property name="nexusiqStage"     category="input" description="Stage of release" kind="enum">`
