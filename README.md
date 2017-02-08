@@ -33,12 +33,10 @@ This plugin (0.0.1+) requires XLR 6.1x+
 
 + Evaluate Binary
 
-   `<property name="binaryUrl"        category="input" description="Location of the binary to be evaluated" />`
+   - binaryUrl - Location of the binary to be evaluated
+   - nexusiqApp - Name of Application in Nexus IQ
+   - nexusiqStage - Stage of release [develop|build|stage-release|release|operate]
    
-   `<property name="nexusiqApp"       category="input" description="Name of Application in Nexus IQ" />`
-    
-   `<property name="nexusiqStage"     category="input" description="Stage of release" kind="enum">`
-
 ## Tiles ##
 
 + Summary Report of Evaluations
