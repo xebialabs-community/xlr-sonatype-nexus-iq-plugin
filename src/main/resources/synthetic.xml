@@ -8,15 +8,15 @@
 -->
 <synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+
     <type type="nexusiq.CliConfig" extends="xlrelease.Configuration">
-        <property name="cliHome"          category="input"/>
-        <property name="cliExecutable"    category="input" default="cli" hidden="true" />
-        <property name="nexusHost"          category="input" default="DEFAULT"/>
-        <property name="nexusPort"          category="input" default="DEFAULT"/>
-        <property name="nexusProxyHost"     category="input" default="DEFAULT"/>
-        <property name="nexusProxyPort"     category="input" default="DEFAULT"/>
-        <property name="nexusUserName"      category="input" default="admin"/>
-        <property name="nexusPassword"      category="input" default="admin" password="true" />
+        <property name="cliJar"               category="input" description="Path to the local CLI jar" />
+        <property name="nexusiqUrl"           category="input" description="Url and PORT of the Nexus IQ Server (e.g. http://localhost:8070)"/>
+        <property name="nexusiqUserName"      category="input" description="Username for the IQ Server"/>
+        <property name="nexusiqPassword"      category="input" description="Password for the IQ Server"  password="true" />
+        <property name="nexusiqProxyUrl"      category="input" required="false" default="DEFAULT"/>
+        <property name="nexusiqProxyUserName" category="input" required="false" default="DEFAULT" description="Username for the Proxy Server"/>
+        <property name="nexusiqProxyPassword" category="input" required="false" default="DEFAULT" description="Password for the Proxy Server"  password="true" />
     </type>
 
     <type type="nexusiq.cliTask" extends="xlrelease.PythonScript" virtual="true" >
@@ -30,8 +30,8 @@
 
     <type type="nexusiq.evaluateBinary" extends="nexusiq.cliTask">
         <property name="binaryUrl"        category="input" description="Location of the binary to be evaluated" />
-        <property name="appName"          category="input" description="Name of Application in Nexus IQ" />
-        <property name="stage"            category="input" description="Stage of release" kind="enum">
+        <property name="nexusiqApp"          category="input" description="Name of Application in Nexus IQ" />
+        <property name="nexusiqStage"            category="input" description="Stage of release" kind="enum">
           <enum-values>
             <value>Development</value>
             <value>Build</value>
@@ -40,7 +40,6 @@
             <value>Operate</value>
           </enum-values>
         </property>
-        <property name="appName"          category="input" description="Name of Application in Nexus IQ" />
     </type>
 
 </synthetic>
