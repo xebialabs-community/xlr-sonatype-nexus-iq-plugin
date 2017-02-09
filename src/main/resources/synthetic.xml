@@ -33,13 +33,12 @@
         <property name="nexusiqApp"          category="input" description="Name of Application in Nexus IQ" />
         <property name="nexusiqStage"            category="input" description="Stage of release" kind="enum">
           <enum-values>
-            <value>Development</value>
-            <value>Build</value>
-            <value>Stage</value>
-            <value>Release</value>
-            <value>Operate</value>
+            <value>develop</value>
+            <value>build</value>
+            <value>stage-release</value>
+            <value>release</value>
+            <value>operate</value>
           </enum-values>
         </property>
     </type>
-
 </synthetic>
