@@ -1,6 +1,4 @@
 plugins {
-    id "com.github.hierynomus.license" version "0.13.0"
-    id "com.xebialabs.xlr.docker" version "1.1.12"
 }
 
 version="0.0.1" 
@@ -9,9 +7,6 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 
-xlrDocker {
-    version = '5.0.1.10'
-}
 
 repositories {
     mavenCentral()
@@ -20,7 +15,3 @@ repositories {
 dependencies {
 }
 
-license {
-    header rootProject.file('src/main/license/xebialabs_community.license')
-    strictCheck false
-}

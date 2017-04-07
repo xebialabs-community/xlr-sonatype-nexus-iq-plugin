@@ -1,37 +1,28 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!--
-
-    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
-    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
-
--->
-<synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-
-    <type type="nexusiq.CliConfig" extends="xlrelease.Configuration">
+<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.xebialabs.com/deployit/synthetic"
+           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+           
+    
+    <type type="nexusiq.Server" extends="configuration.HttpConnection">
         <property name="cliJar"               category="input" description="Path to the local CLI jar" />
-        <property name="nexusiqUrl"           category="input" description="Url and PORT of the Nexus IQ Server (e.g. http://localhost:8070)"/>
-        <property name="nexusiqUserName"      category="input" description="Username for the IQ Server"/>
-        <property name="nexusiqPassword"      category="input" description="Password for the IQ Server"  password="true" />
-        <property name="nexusiqProxyUrl"      category="input" required="false" default="DEFAULT"/>
-        <property name="nexusiqProxyUserName" category="input" required="false" default="DEFAULT" description="Username for the Proxy Server"/>
-        <property name="nexusiqProxyPassword" category="input" required="false" default="DEFAULT" description="Password for the Proxy Server"  password="true" />
+        <property name="proxyHost" default="DEFAULT" />
     </type>
 
     <type type="nexusiq.cliTask" extends="xlrelease.PythonScript" virtual="true" >
         <property name="iconLocation" default="nexusiq/nexusiq-icon.png" hidden="true" />
         <property name="taskColor" hidden="true" default="#68B749" />
-        <property name="cli" kind="ci" referenced-type="nexusiq.CliConfig" required="true" category="input" />
+        <property name="cli" kind="ci" referenced-type="nexusiq.Server" required="true" category="input" />
 
         <property name="output" required="false" category="output" description="Console output of the process."/>
         <property name="err"    required="false" category="output" description="Error stream of the process."/>
     </type>
 
     <type type="nexusiq.evaluateBinary" extends="nexusiq.cliTask">
-        <property name="binaryUrl"        category="input" description="Location of the binary to be evaluated" />
-        <property name="nexusiqApp"          category="input" description="Name of Application in Nexus IQ" />
-        <property name="nexusiqStage"            category="input" description="Stage of release" kind="enum">
+        <property name="binaryLocation"    category="input" description="Location of the binary to be evaluated - can be a local file or URL" />
+        <property name="locationUsername" category="input" description="If location is remote and password protected - username" required="false"/>
+        <property name="locationPassword" category="input" description="If location is remote and password protected - password" password="true" required="false"/>
+        <property name="nexusiqApp"   category="input" description="Name of Application in Nexus IQ" />
+        <property name="nexusiqStage" category="input" description="Stage of release" kind="enum">
           <enum-values>
             <value>develop</value>
             <value>build</value>
@@ -40,5 +31,15 @@
             <value>operate</value>
           </enum-values>
         </property>
+        <property name="outputPath" category="input" hidden="true" default="work/nexusiq/" required="true" description="Local location for file if downloaded from URL"/>  
     </type>
+
+    <type type="nexusiq.NexusiqSummaryTile" label="NexusIQ" extends="xlrelease.Tile">
+        <property name="uri" hidden="true" default="include/NexusiqQueryTile/nexusiq-query-summary-view.html" />
+        <property name="title" description="Display name of the tile" default="NexusIQ"/>
+        <!-- Add tile properties here -->
+        <property category="input" name="nexusiqServer" referenced-type="nexusiq.Server" kind="ci" label="Server" description="NexusIQ server id to connect to"/>
+        <property category="input" name="secLevel" required="true" description="Security Level Label" />
+    </type>
+
 </synthetic>

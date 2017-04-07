@@ -1,0 +1,37 @@
+<div data-ng-controller="nexusiq.NexusiqQueryTileViewController as nexusiqQueryTile" class="nexusiq-query-tile dashboard-tile">
+
+    <div class="no-results" ng-if="!nexusiqQueryTile.tileConfigurationIsPopulated()">
+        Please configure this tile
+    </div>
+
+    <div class="no-results" ng-if="nexusiqQueryTile.statusesCounter === 0">
+        The specified query did not return any results
+    </div>
+
+    
+    <div ng-if="!nexusiqQueryTile.loading && nexusiqQueryTile.statesCounter > 0">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="highcharts-tile" donut-chart data="nexusiqQueryTile.policyViolationsQueryData" options="nexusiqQueryTile.chartOptions"></div>
+            </div>
+            <div class="col-md-5 hidden-xs hidden-sm">
+                <ul class="legend">
+                    <li class="row" ng-repeat="value in nexusiqQueryTile.states | orderBy:'-counter'">
+                        <span class="col-sm-1"><span class="circle" ng-style="{'background-color': value.color}"></span></span>
+                        <span class="col-sm-1">{{value.counter}}</span>
+                        <span class="col-sm-6">{{value.state}}</span>
+                    </li>
+                    <li class="row" ng-if="nexusiqQueryTile.statesCounter > 5">
+                        <span class="col-sm-2"></span>
+                        <span class="col-sm-6">More...</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="nexusiqQueryTile.loading" class="spinner" style="text-align: center">
+        <img src="static/@project.version@/img/big-ajax-loader.gif" alt="Loading..."/>
+    </div>
+
+</div>
