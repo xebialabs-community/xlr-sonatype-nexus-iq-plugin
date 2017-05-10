@@ -23,6 +23,9 @@ See the **[XL Release Documentation](https://docs.xebialabs.com/xl-release/index
 
 The xlr-sonatype-nexus-iq-plugin is a XL Release plugin that enables the evaluation of a binary within Nexus IQ
 
+## Dependencies ##
+You need to install the [NexusIQ command line interface (CLI)](https://books.sonatype.com/sonatype-clm-book/html/book/cli.html)
+
 ## Installation ##
 
 Place the latest released version under the `plugins` dir.
@@ -33,7 +36,7 @@ This plugin (0.0.1+) requires XLR 6.1x+
 
 + Evaluate Binary
 
-   - binaryUrl - Location of the binary to be evaluated
+   - binaryUrl - Location of the binary to be evaluated (Could be local to XLR or a URL (e.g. Jenkins workspace)
    - nexusiqApp - Name of Application in Nexus IQ
    - nexusiqStage - Stage of release [develop|build|stage-release|release|operate]
    
