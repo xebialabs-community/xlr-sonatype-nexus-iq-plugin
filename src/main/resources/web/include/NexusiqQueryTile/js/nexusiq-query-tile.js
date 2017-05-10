@@ -15,22 +15,28 @@
           "Security-High" : {
             "develop"       : "LightSalmon",
             "build"         : "IndianRed",
-            "stage-release" : "red"
+            "stage-release" : "firebrick",
+            "release"       : "red"
           },
           "Security-Medium" : {
             "develop"       : "bisque",
             "build"         : "sandybrown",
-            "stage-release" : "chocolate"
+            "stage-release" : "chocolate",
+            "release"       : "maroon"
+
           },
           "Security-Low" : {
             "develop"       : "green",
             "build"         : "mediumseagreen",
-            "stage-release" : "springgreen"
+            "stage-release" : "springgreen",
+            "release"       : "SeaGreen"
           },
           "default" : {
-            "develop"       : "blue",
+            "develop"       : "powederblie",
             "build"         : "lightblue",
-            "stage-release" : "darkblue"
+            "stage-release" : "blue",
+            "release"       : "darkblue"
+
           }
          
         }
@@ -79,6 +85,7 @@
         function load(config) {
             if (tileConfigurationIsPopulated()) {
                 vm.loading = true;
+                console.log("doing some stuff");
                 NexusiqQueryService.executeQuery(tile.id, config).then(
                     function (response) {
                         var nexusiqPolicyViolationsArray = [];

@@ -4,13 +4,13 @@
            
     
     <type type="nexusiq.Server" extends="configuration.HttpConnection">
-        <property name="cliJar"               category="input" description="Path to the local CLI jar" />
-        <property name="proxyHost" default="DEFAULT" />
+        <property name="cliJar" required="false"               category="input" description="Path to the local CLI jar" />
+        <property name="proxyHost" required="false"/>
     </type>
 
     <type type="nexusiq.cliTask" extends="xlrelease.PythonScript" virtual="true" >
         <property name="iconLocation" default="nexusiq/nexusiq-icon.png" hidden="true" />
-        <property name="taskColor" hidden="true" default="#68B749" />
+        <property name="taskColor" hidden="true" default="#558BBC" />
         <property name="cli" kind="ci" referenced-type="nexusiq.Server" required="true" category="input" />
 
         <property name="output" required="false" category="output" description="Console output of the process."/>
