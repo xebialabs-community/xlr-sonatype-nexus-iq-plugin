@@ -39,9 +39,11 @@ This plugin (0.0.1+) requires XLR 6.1x+
    - binaryUrl - Location of the binary to be evaluated (Could be local to XLR or a URL (e.g. Jenkins workspace)
    - nexusiqApp - Name of Application in Nexus IQ
    - nexusiqStage - Stage of release [develop|build|stage-release|release|operate]
+
+  ![evaluate binary](images/evaluateBinary.png)
    
 ## Tiles ##
 
 + Summary Report of Evaluations
 
-  ![image](images/SonatypeNexusTile.png)
+  ![evaluation report](images/latestEvaluationReport.png)
