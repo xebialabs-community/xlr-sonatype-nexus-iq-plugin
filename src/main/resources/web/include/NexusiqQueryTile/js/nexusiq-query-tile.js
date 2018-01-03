@@ -32,7 +32,7 @@
             "release"       : "SeaGreen"
           },
           "default" : {
-            "develop"       : "powederblie",
+            "develop"       : "powderblue",
             "build"         : "lightblue",
             "stage-release" : "blue",
             "release"       : "darkblue"
@@ -41,23 +41,29 @@
          
         }
 
-        if ($scope.xlrTile) {
-            // summary mode
-            tile = $scope.xlrTile.tile;
-            secLevel = tile.configurationProperties.secLevel;
+       if ($scope.xlrDashboard) {
+            // summary page
+            vm.release = $scope.xlrDashboard.release;
+            vm.tile = $scope.xlrTile.tile;
+            if (vm.tile.properties == null) {
+                vm.config = vm.tile.configurationProperties;
+            } else {
+                // new style since 7.0
+                vm.config = vm.tile.properties;
+            }
+            secLevel = vm.config.secLevel;
         }
-        console.log(tile.configurationProperties);
+
+        function tileConfigurationIsPopulated() {
+            return !_.isEmpty(vm.config.nexusiqServer);
+        }
+
 
         function getColor(value) {
             if (Object.keys(predefinedColors).indexOf(secLevel) > -1)
               return predefinedColors[secLevel][value];
             else
               return predefinedColors["default"][value];
-        }
-
-        function tileConfigurationIsPopulated() {
-            var config = tile.configurationProperties;
-            return !_.isEmpty(config.nexusiqServer);
         }
 
         function toUpperCaseFirst(string) {
@@ -85,14 +91,11 @@
         function load(config) {
             if (tileConfigurationIsPopulated()) {
                 vm.loading = true;
-                console.log("doing some stuff");
-                NexusiqQueryService.executeQuery(tile.id, config).then(
+                NexusiqQueryService.executeQuery(vm.tile.id, config).then(
                     function (response) {
                         var nexusiqPolicyViolationsArray = [];
                         var policyViolations = JSON.parse(response.data.data);
-                        console.log("about to get policy Violations");                      
                         console.log(policyViolations);
-                        console.log("How do I get rid of quotes " + secLevel);
                         if(policyViolations[0] === "Invalid request"){
                             console.log("Invalid request");
                             vm.invalidRequest = true;
@@ -105,11 +108,8 @@
                                 data: null,
                                 total: 0
                             };
-                            $scope.xlrTile.title = $scope.xlrTile.title + " : " + policyViolations[secLevel][0].appName;
                             vm.policyViolationsQueryData.data = _.reduce(policyViolations[secLevel], function (result, value) {
-                                
                                 var state = value.stageId;
-                                console.log("We now have a state" + state);
                                 vm.policyViolationsQueryData.total += 1;
                                 if (result[state]) {
                                     result[state].counter += 1;
