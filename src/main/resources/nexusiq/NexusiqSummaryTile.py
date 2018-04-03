@@ -6,31 +6,36 @@ username = nexusiqServer['username']
 password = nexusiqServer['password']
 httpRequest = HttpRequest(nexusiqServer, username, password)
 
-
-policiesUrl = '/api/v2/policies/'
-response = httpRequest.get(policiesUrl, contentType='application/json')
-print "About to read Policy List"
-policyList = json.loads(response.getResponse())
-print json.dumps(policyList, indent=4)
-dataa = []
 apps = {}
-for item in policyList['policies']:
-  policyID = item['id']
-  policyName = item['name']
-  appName = ''
+violationsArray = []
+
+# Fetching the list of policies
+url = '/api/v2/policies/'
+print "About to read Policy List"
+response = httpRequest.get(url, contentType='application/json')
+policyList = json.loads(response.getResponse())
+#print json.dumps(policyList, indent=4)
+
+# Grabbing policy name that matches the security-level
+policy = [item for item in policyList['policies'] if item['name'] == secLevel ]
+if policy:
+  policyID = policy[0]['id']
+
+
+  # Fetching policy voilations
   url = '/api/v2/policyViolations?p=%s' % policyID
-  response = httpRequest.get(url, contentType='application/json')
   print "About to get violations from the response"
-  print response.getResponse()
+  response = httpRequest.get(url, contentType='application/json')
   violations = json.loads(response.getResponse())
-  for app in violations['applicationViolations']:
-    appName = app['application']['name']
-    policyName = ''
-    violationsArray = []
-    for policyViolation in app['policyViolations']:
+  #print json.dumps(violations, indent=4)
+
+  # Grabbing voilations for the matching application
+  app = [item for item in violations['applicationViolations'] if item['application']['name'] == application]
+  if app:
+    for policyViolation in app[0]['policyViolations']:
       policyName = policyViolation['policyName']
       violationObject = {
-          'appName'   : appName,
+          'appName'   : application,
           'stageId'   : policyViolation['stageId'],
           'reportUrl' : policyViolation['reportUrl'],
       }
@@ -40,6 +45,7 @@ for item in policyList['policies']:
       policyName : violationsArray
     }
     apps.update(appObject)
-   
+     
+print "%s voilations for applicaton %s" % (secLevel, application)
 data = json.dumps(apps)
-print data
+print json.dumps(data, indent=4)

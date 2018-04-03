@@ -9,7 +9,7 @@
 
         var tile;
         var secLevel;
-        var appName;
+        var application;
 
         var predefinedColors = {
           "Security-High" : {
@@ -52,6 +52,7 @@
                 vm.config = vm.tile.properties;
             }
             secLevel = vm.config.secLevel;
+            application = vm.config.application;
         }
 
         function tileConfigurationIsPopulated() {

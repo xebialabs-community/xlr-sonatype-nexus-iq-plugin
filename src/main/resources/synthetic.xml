@@ -39,6 +39,7 @@
         <property name="title" description="Display name of the tile" default="NexusIQ"/>
         <!-- Add tile properties here -->
         <property category="input" name="nexusiqServer" referenced-type="nexusiq.Server" kind="ci" label="Server" description="NexusIQ server id to connect to"/>
+        <property category="input" name="application" required="true" label="Application Name"  description="Application Name" />
         <property category="input" name="secLevel" required="true" description="Security Level Label" />
         <property name="embedded" kind="boolean" hidden="true" default="true" required="false"/>
     </type>
