@@ -39,8 +39,8 @@ Here's a link to the nexus CLI jar file to download : [https://download.sonatype
 
 ## Configuration ##
 
-![evaluate binary](images/shared config snapshot.png)
-![evaluate binary](images/shared config snapshot2.png)
+![evaluate binary](images/shared_config_snapshot.png)
+![evaluate binary](images/shared_config_snapshot2.png)
 
 ## Types ##
 
@@ -52,18 +52,18 @@ Here's a link to the nexus CLI jar file to download : [https://download.sonatype
 
 + Task Details
 
-  ![evaluate binary](images/task details snapshot.png)
+  ![evaluate binary](images/task_details_snapshot.png)
 
 + Running Release
 
-  ![evaluate binary](images/running release snapshot.png)
+  ![evaluate binary](images/running_release_snapshot.png)
    
 ## Tiles ##
 
 + Tile configuration
 
-  ![evaluation report](images/dashboard tile config snapshot.png)
+  ![evaluation report](images/dashboard_tile_config_snapshot.png)
 
 + Summary Report of Evaluations
   
-  ![evaluation report](images/dashboard snapshot.png)
+  ![evaluation report](images/dashboard_snapshot.png)
