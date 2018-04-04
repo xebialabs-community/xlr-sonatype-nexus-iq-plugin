@@ -30,7 +30,8 @@ if policy:
   #print json.dumps(violations, indent=4)
 
   # Grabbing voilations for the matching application
-  app = [item for item in violations['applicationViolations'] if item['application']['name'] == application]
+  app = [item for item in violations['applicationViolations'] if item['application']['publicId'] == application]
+  print app
   if app:
     for policyViolation in app[0]['policyViolations']:
       policyName = policyViolation['policyName']

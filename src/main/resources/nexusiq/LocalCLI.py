@@ -28,7 +28,7 @@ class Localcliscript():
       self.cmdLine.addArgument( nexusiqUrl )
       self.cmdLine.addArgument( '--authentication' )
       self.cmdLine.addArgument( "%s:%s" % (nexusiqUserName,nexusiqPassword) )
-      if nexusiqProxyUrl  != "DEFAULT":
+      if nexusiqProxyUrl:
         self.cmdLine.addArgument( '--proxy' )
         self.cmdLine.addArgument( nexusiqProxyUrl )
         self.cmdLine.addArgument( "%s:%s" % (nexusiqProxyUserName, nexusiqProxyPassword) )

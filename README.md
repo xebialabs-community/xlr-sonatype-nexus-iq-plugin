@@ -34,18 +34,36 @@ Place the latest released version under the `plugins` dir.
 
 This plugin (1.0.0+) requires XLR 6.1x+
 
+## Extras ##
+Here's a link to the nexus CLI jar file to download : [https://download.sonatype.com/clm/scanner/nexus-iq-cli-1.42.0-01.jar] (https://download.sonatype.com/clm/scanner/nexus-iq-cli-1.42.0-01.jar)
+
+## Configuration ##
+
+![evaluate binary](images/shared config snapshot.png)
+![evaluate binary](images/shared config snapshot2.png)
+
 ## Types ##
 
 + Evaluate Binary
 
    - binaryUrl - Location of the binary to be evaluated (Could be local to XLR or a URL (e.g. Jenkins workspace)
-   - nexusiqApp - Name of Application in Nexus IQ
+   - nexusiqApp - Application Id ( Public ID) in Nexus IQ
    - nexusiqStage - Stage of release [develop|build|stage-release|release|operate]
 
-  ![evaluate binary](images/evaluateBinary.png)
++ Task Details
+
+  ![evaluate binary](images/task details snapshot.png)
+
++ Running Release
+
+  ![evaluate binary](images/running release snapshot.png)
    
 ## Tiles ##
 
-+ Summary Report of Evaluations
++ Tile configuration
 
-  ![evaluation report](images/latestEvaluationReport.png)
+  ![evaluation report](images/dashboard tile config snapshot.png)
+
++ Summary Report of Evaluations
+  
+  ![evaluation report](images/dashboard snapshot.png)

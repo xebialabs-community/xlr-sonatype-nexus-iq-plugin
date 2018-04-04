@@ -4,8 +4,10 @@
            
     
     <type type="nexusiq.Server" extends="configuration.HttpConnection">
-        <property name="cliJar" required="false"               category="input" description="Path to the local CLI jar" />
-        <property name="proxyHost" required="false"/>
+        <property name="cliJar" required="false" category="input" description="Path to the local CLI jar in case you want to use evaluate Task" />
+        <property name="checkConfigurationContentType" hidden="true" default="application/json"/>
+        <property name="checkConfigurationPath" hidden="true" default="/api/v2/organizations"/>
+        <property name="scriptLocation" hidden="true" default="configuration/HttpConnectionCheck.py"/>
     </type>
 
     <type type="nexusiq.cliTask" extends="xlrelease.PythonScript" virtual="true" >
@@ -39,8 +41,8 @@
         <property name="title" description="Display name of the tile" default="NexusIQ"/>
         <!-- Add tile properties here -->
         <property category="input" name="nexusiqServer" referenced-type="nexusiq.Server" kind="ci" label="Server" description="NexusIQ server id to connect to"/>
-        <property category="input" name="application" required="true" label="Application Name"  description="Application Name" />
-        <property category="input" name="secLevel" required="true" description="Security Level Label" />
+        <property category="input" name="application" required="true" label="Application Id"  description="Application Id eg. example-app" />
+        <property category="input" name="secLevel" required="true" description="Security Level Label eg. Security-High, Security-Low, Component-Unknown" />
         <property name="embedded" kind="boolean" hidden="true" default="true" required="false"/>
     </type>
 
