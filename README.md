@@ -35,7 +35,7 @@ Place the latest released version under the `plugins` dir.
 This plugin (1.0.0+) requires XLR 6.1x+
 
 ## Extras ##
-Here's a link to the nexus CLI jar file to download : [https://download.sonatype.com/clm/scanner/nexus-iq-cli-1.42.0-01.jar] (https://download.sonatype.com/clm/scanner/nexus-iq-cli-1.42.0-01.jar)
+Here's a link to the nexus CLI jar file to download : [https://download.sonatype.com/clm/scanner/nexus-iq-cli-1.42.0-01.jar](https://download.sonatype.com/clm/scanner/nexus-iq-cli-1.42.0-01.jar)
 
 ## Configuration ##
 
