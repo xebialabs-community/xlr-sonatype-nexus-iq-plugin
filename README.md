@@ -1,4 +1,4 @@
-XLR Sonatype Nexus Iq plugin is deprecated now as the plugin is insourced to xebialabs organization.
+XLR Sonatype Nexus Iq plugin is deprecated now as the plugin is insourced to Digital.ai organization.
 The plugin is available on https://dist.xebialabs.com/customer/xl-release/plugins/xlr-sonatype-nexus-iq-plugin
 
 # Preface #
